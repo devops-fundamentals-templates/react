@@ -40,7 +40,7 @@ export function ProductList() {
           {products.map((product, index) => (
             <tr key={product.id}>
               <td>{index + 1}</td>
-              <td>{product.title}</td>
+              <td>{product.name}</td>
               <td>{product.price}</td>
               <td style={{ display: "flex" }}>
                 <Link

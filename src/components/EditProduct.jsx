@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import {
+  patchProduct,
+  getProductById as getProductFromApi,
+} from "../api/services";
 
 export function EditProduct() {
-  const [title, setTitle] = useState("fafa");
+  const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   const { id } = useParams();
   const updateProduct = async (e) => {
     e.preventDefault();
-    await axios.patch(`http://localhost:5000/products/${id}`, {
-      title: title,
-      price: price,
-    });
+    await patchProduct(id, title, price);
     navigate("/");
   };
 
@@ -22,9 +22,9 @@ export function EditProduct() {
   }, []);
 
   const getProductById = async () => {
-    const response = await axios.get(`http://localhost:5000/products/${id}`);
-    setTitle(response.data.title);
-    setPrice(response.data.price);
+    const response = await getProductFromApi(id);
+    setTitle(response.name);
+    setPrice(response.price);
     setIsLoading(false);
   };
   if (isLoading) return <p>Loading...</p>;

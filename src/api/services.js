@@ -7,13 +7,25 @@ export async function getProducts() {
   return response.data;
 }
 
+export async function getProductById(id) {
+  const response = await axios.get(`${BASE_URL}/products/${id}`);
+  return response.data;
+}
+
 export async function deleteProduct(id) {
   await axios.delete(`${BASE_URL}/products/${id}`);
 }
 
-export async function addProduct(title, price) {
+export async function addProduct(name, price) {
   await axios.post(`${BASE_URL}/products`, {
-    title: title,
-    price: price,
+    name,
+    price,
+  });
+}
+
+export async function patchProduct(id, name, price) {
+  await axios.patch(`http://localhost:5000/products/${id}`, {
+    name,
+    price,
   });
 }
