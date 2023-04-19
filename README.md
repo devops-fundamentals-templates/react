@@ -30,3 +30,9 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### Run mock server
+To run mock server you need to install and run json server.
+`npm install -g json-server`
+`json-server db.json -p 5000`
+
