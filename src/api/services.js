@@ -24,7 +24,7 @@ export async function addProduct(name, price) {
 }
 
 export async function patchProduct(id, name, price) {
-  await axios.patch(`http://localhost:5000/products/${id}`, {
+  await axios.patch(`${BASE_URL}/products/${id}`, {
     name,
     price,
   });
